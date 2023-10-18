@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "639345974694",
+    "project_id": "mytaag-1",
+    "storage_bucket": "mytaag-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639345974694:android:a72c00ec17a05eaf9b8367",
+        "android_client_info": {
+          "package_name": "com.example.mytaag"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwKW7NY0NI4qqrhrh48CpCTIFapNObxzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639345974694:android:72c445e4d1b018b29b8367",
+        "android_client_info": {
+          "package_name": "com.example.todo_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwKW7NY0NI4qqrhrh48CpCTIFapNObxzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
