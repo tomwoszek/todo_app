@@ -125,9 +125,8 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: SizedBox(
-                                          // height: 65,
-                                          width:
-                                              MediaQuery.of(context).size.width,
+                                           height: 65,
+                                          width: MediaQuery.of(context).size.width,
                                           child: ListTile(
                                             leading: const Icon(
                                                 Icons.today_outlined),

@@ -57,10 +57,7 @@ class TodoService {
   Stream<QuerySnapshot<Object>> getToDos() {
     Stream<QuerySnapshot<Object>> ToDos = _serverService
         .collection("ToDos")
-        .where(
-          "ToDo-User",
-          isEqualTo: _localStorage.getAccessToken(),
-        )
+        
         .snapshots();
     return ToDos;
   }

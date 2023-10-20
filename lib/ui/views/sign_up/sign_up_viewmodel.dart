@@ -26,7 +26,11 @@ class SignUpViewModel extends FormViewModel {
     apiOutput = await _authenticationService.authenticate(
         "$emailValue", "$passwordValue", AuthMode.register);
 
-    if (apiOutput == "Anmeldung erfolgreich") {
+    if (apiOutput == null) {
+      showError("$apiOutput");
+      return;
+    };
+    if (apiOutput!.isNotEmpty) {
       await _navigationService.replaceWithHomeView();
     } else {
       showError("$apiOutput");

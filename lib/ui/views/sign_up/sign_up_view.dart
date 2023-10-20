@@ -61,7 +61,7 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
                         onPressedCallback: () {
                           viewModel.signUp();
                         },
-                        label: const Text("SignIn"),
+                        label: const Text("Registrieren"),
                       ),
                       Text("${viewModel.errorText}"),
                       verticalSpaceMedium,

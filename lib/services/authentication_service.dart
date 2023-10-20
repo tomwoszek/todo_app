@@ -8,9 +8,13 @@ class AuthenticationService {
   final _localStorage = locator<StoredatalocalService>();
 
   Future<String?> authenticate(
-      String email, String password, AuthMode authMode) async {
+   String email, 
+   String password, 
+   AuthMode authMode
+  ) async {
     try {
       final UserCredential userCredential;
+
       if (authMode == AuthMode.login) {
         userCredential = await _auth.signInWithEmailAndPassword(
           email: email,
@@ -22,9 +26,18 @@ class AuthenticationService {
           password: password,
         );
       }
-      final accessToken = await userCredential.credential?.accessToken;
+      print("$userCredential");
+      
+      if (userCredential == null) return null;
+
+      final accessToken =  await userCredential.user!.email;
+
+       _localStorage.setToken("$accessToken");
+
       if (accessToken == null) return null;
-      await _localStorage.setToken(accessToken);
+
+      print(accessToken);
+      
       return accessToken;
     } on FirebaseAuthException {
       print('FIREBASE_ERROR: Firebase login fehlgeschlagen');

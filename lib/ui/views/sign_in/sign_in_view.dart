@@ -64,14 +64,14 @@ class SignInView extends StackedView<SignInViewModel> with $SignInView {
                         onPressedCallback: () {
                           viewModel.signIn();
                         },
-                        label: const Text("SignUp"),
+                        label: const Text("Einloggen"),
                       ),
                       verticalSpaceMedium,
                       GestureDetector(
                         onTap: () {
                           viewModel.navigateToSignUp();
                         },
-                        child: const Text("Noch kein Account? Einloggen",
+                        child: const Text("Noch kein Account? Registrieren",
                             style: TextStyle(color: Colors.blue, fontSize: 15)),
                       )
                     ],

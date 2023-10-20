@@ -20,8 +20,11 @@ class SignInViewModel extends FormViewModel {
         emailValue!, passwordValue!, AuthMode.login);
 
     print(accessToken);
-
-    if (accessToken!.isNotEmpty) {
+    if (accessToken == null) {
+      showError("$accessToken");
+      return;
+    };
+    if (accessToken.isNotEmpty) {
       await _navigationService.replaceWithHomeView();
     } else {
       showError("$accessToken");
