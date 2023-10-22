@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:todo_app/app/app.bottomsheets.dart';
 import 'package:todo_app/app/app.locator.dart';
 import 'package:todo_app/app/app.router.dart';
+import 'package:todo_app/services/categorie_service_service.dart';
 import 'package:todo_app/services/storedatalocal_service.dart';
 import 'package:todo_app/services/todo_service.dart';
 import 'package:stacked/stacked.dart';
@@ -14,6 +15,7 @@ class HomeViewModel extends FormViewModel {
   final _toDoservice = locator<TodoService>();
   final _navigationService = locator<NavigationService>();
   final _bottomSheetService = locator<BottomSheetService>();
+  final _categorieService = locator<CategorieServiceService>();
 
   Future<void> createToDo() async {
     if (nameValue == null) return;
@@ -39,18 +41,28 @@ class HomeViewModel extends FormViewModel {
     await _navigationService.replaceWithSignInView();
   }
 
- void showBottomSheet(String title, String description, DateTime createdAt) {
+  void showBottomSheet(String title, String description, Timestamp createdAt) {
     _bottomSheetService.showCustomSheet(
-      variant: BottomSheetType.notice,
-      title: title,
-      description: description,
-      customData: createdAt
-    );
+        variant: BottomSheetType.notice,
+        title: title,
+        description: description,
+        customData: createdAt);
   }
 
- String? getAccesToken() {
-  final AccesToken = _localStorage.getAccessToken();
-  return AccesToken;
- }
+  String? getAccesToken() {
+    final AccesToken = _localStorage.getAccessToken();
+    return AccesToken;
+  }
 
+  void navigaeToAddCategory() {
+    _navigationService.navigateToAddCategorieView();
+  }
+
+  Stream<QuerySnapshot<Object>> readCategories() {
+    return _categorieService.readCategories();
+  }
+
+  void navigateToCategoieDetailview(data) {
+    _navigationService.navigateToCategorieDetailviewView(data: data);
+  }
 }

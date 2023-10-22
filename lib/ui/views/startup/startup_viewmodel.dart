@@ -10,7 +10,8 @@ class StartupViewModel extends BaseViewModel {
 
   // Place anything here that needs to happen before we get into the application
   Future runStartupLogic() async {
-    if (_localStorage.getAccessToken() == "") {
+    if (_localStorage.getAccessToken()!.isEmpty ||
+        _localStorage.getAccessToken() == null) {
       _navigationService.replaceWithSignUpView();
     } else {
       _navigationService.replaceWithHomeView();

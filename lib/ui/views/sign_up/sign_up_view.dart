@@ -67,6 +67,7 @@ class SignUpView extends StackedView<SignUpViewModel> with $SignUpView {
                       verticalSpaceMedium,
                       GestureDetector(
                         onTap: () {
+                          ValidateForm();
                           viewModel.navigateToSignIn();
                         },
                         child: const Text("Bereits ein Account? Einloggen",

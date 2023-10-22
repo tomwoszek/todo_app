@@ -22,6 +22,7 @@ class SignUpViewModel extends FormViewModel {
   Future<void> signUp() async {
     if (emailValue == null) return;
     if (passwordValue == null) return;
+    if (passwordValue!.isEmpty && emailValue!.isEmpty) return;
 
     apiOutput = await _authenticationService.authenticate(
         "$emailValue", "$passwordValue", AuthMode.register);
@@ -29,7 +30,8 @@ class SignUpViewModel extends FormViewModel {
     if (apiOutput == null) {
       showError("$apiOutput");
       return;
-    };
+    }
+    ;
     if (apiOutput!.isNotEmpty) {
       await _navigationService.replaceWithHomeView();
     } else {

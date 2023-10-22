@@ -26,7 +26,7 @@ class CustomButton extends StatelessWidget {
       width: width,
       height: height,
       child: CupertinoButton(
-          color: Color.fromARGB(255, 0, 96, 174),
+          color: CupertinoColors.activeBlue,
           borderRadius: BorderRadius.circular(20),
           onPressed: onPressedCallback,
           child: label),

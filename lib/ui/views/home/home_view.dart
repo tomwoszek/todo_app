@@ -3,12 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
-import 'package:todo_app/services/storedatalocal_service.dart';
 import 'package:todo_app/ui/common/ui_helpers.dart';
 import 'package:todo_app/ui/views/home/home_view.form.dart';
 import 'package:todo_app/ui/widgets/common/costum_button/costum_button.dart';
-import 'package:todo_app/ui/widgets/common/custum_text_form_fiel/custum_text_form_fiel.dart';
-
 import 'home_viewmodel.dart';
 
 @FormView(fields: [
@@ -30,82 +27,144 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
     Widget? child,
   ) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: const Text("ToDo App",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-        actions: [
-          IconButton(
-            onPressed: () {
-              viewModel.logOut();
-            },
-            icon: const Icon(Icons.logout),
-            color: Colors.red,
-          )
-        ],
-      ),
       body: SafeArea(
         child: ListView(
           children: [
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                   "${viewModel.getAccesToken()}"
-                   
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text("Deine ToDo's",
+                          style: TextStyle(
+                              fontSize: 27, fontWeight: FontWeight.bold)),
+                      IconButton(
+                        icon: const Icon(Icons.account_circle),
+                        color: CupertinoColors.activeBlue,
+                        iconSize: 30,
+                        onPressed: () {},
+                      )
+                    ],
                   ),
-                  Material(
-                    color: CupertinoColors.systemGrey6,
-                    borderRadius: BorderRadius.circular(20),
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Erstelle eine ToDo",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          verticalSpaceSmall,
-                          CustomTextFormField(
-                              hintInfo: "Name",
-                              labelInfo: "Name",
-                              controller: nameController),
-                          verticalSpaceSmall,
-                          CustomTextFormField(
-                            hintInfo: "Beschreibung",
-                            labelInfo: "Beschreibung",
-                            controller: beschreibungckController,
-                          ),
-                          verticalSpaceSmall,
-                          CustomButton(
-                            onPressedCallback: () async {
-                              await viewModel.createToDo();
-                              nameController.clear();
-                              beschreibungckController.clear();
-                            },
-                            label: const Text(
-                              "Hochladen",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
-                            ),
-                          )
-                        ],
+                  const SizedBox(
+                    height: 12.5,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.425,
+                          child: Material(
+                              color: CupertinoColors.systemGrey6,
+                              borderRadius: BorderRadius.circular(20),
+                              child: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: Row(
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Material(
+                                          color: CupertinoColors.systemGrey5,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(4.0),
+                                            child: Icon(
+                                              Icons.more_horiz,
+                                              color: CupertinoColors.systemGrey,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 20),
+                                        const Text("Alle ToDos",
+                                            style: TextStyle(
+                                                color:
+                                                    CupertinoColors.systemGrey,
+                                                fontWeight: FontWeight.bold))
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              )),
+                        ),
                       ),
-                    ),
+                      GestureDetector(
+                        onTap: () {
+                          viewModel.navigaeToAddCategory();
+                        },
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.425,
+                          child: Material(
+                              color: CupertinoColors.systemGrey6,
+                              borderRadius: BorderRadius.circular(20),
+                              child: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: Row(
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Material(
+                                          color: CupertinoColors.activeBlue,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(4.0),
+                                            child: Icon(
+                                              Icons.add,
+                                              color: CupertinoColors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 20),
+                                        const Text("Neue Kategorie",
+                                            style: TextStyle(
+                                                color:
+                                                    CupertinoColors.systemGrey,
+                                                fontWeight: FontWeight.bold))
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              )),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text("Deine Kategorien",
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 12.5,
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.65,
                     width: MediaQuery.of(context).size.width,
                     child: StreamBuilder(
-                        stream: viewModel.readToDos(),
+                        stream: viewModel.readCategories(),
                         builder: (BuildContext context,
                             AsyncSnapshot<QuerySnapshot> snapshot) {
                           if (!snapshot.hasData) {
@@ -119,41 +178,47 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
                                 return Column(
                                   children: [
                                     verticalSpaceSmall,
-                                    Material(
-                                      color: CupertinoColors.systemGrey6,
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: SizedBox(
-                                           height: 65,
-                                          width: MediaQuery.of(context).size.width,
-                                          child: ListTile(
-                                            leading: const Icon(
-                                                Icons.today_outlined),
-                                            title: Text(data["todo-name"]),
-                                            subtitle:
-                                                Text(data["todo-description"]),
-                                            trailing: Row(
-                                              children: [
-                                                IconButton(
-                                                  icon: const Icon(Icons.delete),
-                                                  color: Colors.red,
-                                                  onPressed: () {
-                                                    viewModel.deleteToDo(data.id);
-                                                  },
-                                                ),
-                                                horizontalSpaceSmall,
-                                                IconButton(
-                                                  icon: const Icon(CupertinoIcons.chevron_right),
-                                                  color: Colors.red,
-                                                  onPressed: () {
-                                                    viewModel.showBottomSheet(data["todo-name"], data["todo-description"],  data["todo-createdAt"]);
-                                                  },
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        viewModel
+                                            .navigateToCategoieDetailview(data);
+                                      },
+                                      child: SizedBox(
+                                        child: Material(
+                                            color: CupertinoColors.systemGrey6,
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(15.0),
+                                              child: Row(
+                                                children: [
+                                                  Material(
+                                                    color: CupertinoColors
+                                                        .activeOrange,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    child: const Padding(
+                                                      padding:
+                                                          EdgeInsets.all(4.0),
+                                                      child: Icon(
+                                                        Icons.more_horiz,
+                                                        color: CupertinoColors
+                                                            .white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(width: 10),
+                                                  Text(data["kategoire-name"],
+                                                      style: TextStyle(
+                                                          color: CupertinoColors
+                                                              .systemGrey,
+                                                          fontWeight:
+                                                              FontWeight.bold))
+                                                ],
+                                              ),
+                                            )),
                                       ),
                                     ),
                                   ],

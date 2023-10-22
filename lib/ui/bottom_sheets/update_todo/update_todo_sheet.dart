@@ -42,54 +42,40 @@ class UpdateTodoSheet extends StackedView<UpdateTodoSheetModel> {
               request.title ?? 'ToDo',
               style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w900),
             ),
-      
             Material(
-              color: CupertinoColors.systemGrey6,
-              borderRadius: BorderRadius.circular(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-
-                  Icon(
-                    CupertinoIcons.ellipsis
-                  ),
-
-                  SizedBox(width: 15,),
-
-                  Text(
-                    request.description!,
-                    style: TextStyle(
-                      height: 17
+                color: CupertinoColors.systemGrey6,
+                borderRadius: BorderRadius.circular(20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(CupertinoIcons.ellipsis),
+                    SizedBox(
+                      width: 15,
                     ),
-                  )
-                ],
-              )
-            ),
-
+                    Text(
+                      request.description!,
+                      style: TextStyle(height: 17),
+                    )
+                  ],
+                )),
             Material(
-              color: CupertinoColors.systemGrey6,
-              borderRadius: BorderRadius.circular(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-
-                  Icon(
-                    CupertinoIcons.calendar
-                  ),
-
-                  SizedBox(width: 15,),
-
-                  Text(
-                    "${request.customData!}",
-                    style: TextStyle(
-                      height: 17
+                color: CupertinoColors.systemGrey6,
+                borderRadius: BorderRadius.circular(20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(CupertinoIcons.calendar),
+                    SizedBox(
+                      width: 15,
                     ),
-                  )
-                ],
-              )
-            )
+                    Text(
+                      "${request.customData!}",
+                      style: TextStyle(height: 17),
+                    )
+                  ],
+                ))
           ],
         ),
       ),

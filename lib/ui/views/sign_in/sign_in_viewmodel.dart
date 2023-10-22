@@ -15,6 +15,7 @@ class SignInViewModel extends FormViewModel {
   Future<void> signIn() async {
     if (emailValue == null) return;
     if (passwordValue == null) return;
+    if (passwordValue!.isEmpty && emailValue!.isEmpty) return;
 
     final accessToken = await _authenticationService.authenticate(
         emailValue!, passwordValue!, AuthMode.login);
@@ -23,7 +24,8 @@ class SignInViewModel extends FormViewModel {
     if (accessToken == null) {
       showError("$accessToken");
       return;
-    };
+    }
+    ;
     if (accessToken.isNotEmpty) {
       await _navigationService.replaceWithHomeView();
     } else {

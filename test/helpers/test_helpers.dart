@@ -5,6 +5,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:todo_app/services/authentication_service.dart';
 import 'package:todo_app/services/todo_service.dart';
 import 'package:todo_app/services/storedatalocal_service.dart';
+import 'package:todo_app/services/categorie_service_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -16,6 +17,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<AuthenticationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<TodoService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<StoredatalocalService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<CategorieServiceService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -25,6 +27,7 @@ void registerServices() {
   getAndRegisterAuthenticationService();
   getAndRegisterTodoService();
   getAndRegisterStoredatalocalService();
+  getAndRegisterCategorieServiceService();
 // @stacked-mock-register
 }
 
@@ -96,6 +99,13 @@ MockStoredatalocalService getAndRegisterStoredatalocalService() {
   _removeRegistrationIfExists<StoredatalocalService>();
   final service = MockStoredatalocalService();
   locator.registerSingleton<StoredatalocalService>(service);
+  return service;
+}
+
+MockCategorieServiceService getAndRegisterCategorieServiceService() {
+  _removeRegistrationIfExists<CategorieServiceService>();
+  final service = MockCategorieServiceService();
+  locator.registerSingleton<CategorieServiceService>(service);
   return service;
 }
 // @stacked-mock-create

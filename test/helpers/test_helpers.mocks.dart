@@ -11,6 +11,7 @@ import 'package:flutter/material.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i2;
 import 'package:todo_app/services/authentication_service.dart' as _i6;
+import 'package:todo_app/services/categorie_service_service.dart' as _i11;
 import 'package:todo_app/services/storedatalocal_service.dart' as _i10;
 import 'package:todo_app/services/todo_service.dart' as _i8;
 import 'package:todo_app/services/utils/auth_mode_enum.dart' as _i7;
@@ -768,4 +769,38 @@ class MockStoredatalocalService extends _i1.Mock
         returnValue: _i4.Future<bool>.value(false),
         returnValueForMissingStub: _i4.Future<bool>.value(false),
       ) as _i4.Future<bool>);
+}
+
+/// A class which mocks [CategorieServiceService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockCategorieServiceService extends _i1.Mock
+    implements _i11.CategorieServiceService {
+  @override
+  _i4.Future<void> creatCategorie(
+    String? Nutzer,
+    String? kategorieName,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #creatCategorie,
+          [
+            Nutzer,
+            kategorieName,
+          ],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Stream<_i9.QuerySnapshot<Object>> readCategories() => (super.noSuchMethod(
+        Invocation.method(
+          #readCategories,
+          [],
+        ),
+        returnValue: _i4.Stream<_i9.QuerySnapshot<Object>>.empty(),
+        returnValueForMissingStub:
+            _i4.Stream<_i9.QuerySnapshot<Object>>.empty(),
+      ) as _i4.Stream<_i9.QuerySnapshot<Object>>);
 }
